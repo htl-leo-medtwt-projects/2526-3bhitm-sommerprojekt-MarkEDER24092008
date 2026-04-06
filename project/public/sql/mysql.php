@@ -1,15 +1,17 @@
 <?php
 
-$servername = "db_server";
-$port = "3306";
-$username = "";
-$password = "";
-$dbname = "IndiGo";
+$host = "db_server";
+$user = "admin";       // ggf. anpassen
+$pass = "123";           // ggf. anpassen
+$db   = "IndiGo";
 
-$conn = new mysqli($servername, $username, $password, $dbname, $port);
+// 2. Verbindung erstellen (mysqli Objekt)
+$conn = new mysqli($host, $user, $pass, $db);
 
+// 3. Verbindung prüfen
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+// jetzt kannst du $conn überall nutzen
 ?>
