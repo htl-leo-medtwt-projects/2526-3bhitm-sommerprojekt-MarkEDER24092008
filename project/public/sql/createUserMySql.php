@@ -21,8 +21,8 @@ if ($conn->connect_error) {
 
         #Statement for insert the values of the new user
 
-        $insertStatement = "INSERT INTO login_username (username, password, user_deleted, last_login) 
-                            VALUES ('$_username', '$_passwortHash', 0, NOW());";   
+        $insertStatement = "INSERT INTO user (username,email, password, created_at, streak_count, last_login, xp, language_id) 
+                            VALUES ('$_username','', '$_passwortHash', NOW(),0 , NOW(), 0, 0);";   
 
         if($_res = $conn->query($insertStatement)) {
             echo "<br>USER $_username has been added to the database. <br> Try to log in.";

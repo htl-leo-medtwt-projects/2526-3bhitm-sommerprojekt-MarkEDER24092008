@@ -5,7 +5,7 @@ SESSION_START();
 
 $_db_host = "db_server";
 $_db_datenbank = "IndiGo";
-$_db_username = "web";
+$_db_username = "root";
 $_db_passwort = "database-password";
 
 #open database connection
@@ -21,7 +21,7 @@ if (!empty($_POST["submit"])) {
     $_password = $_POST["password"];
 
     $stmt = $conn->prepare (
-        "SELECT * FROM login_username WHERE username = ? AND user_deleted = 0 LIMIT 1"
+        "SELECT * FROM user WHERE username = ? LIMIT 1"
     );
 
     $stmt->bind_param("s", $_username);
@@ -37,7 +37,7 @@ if($res->num_rows === 1) {
        $_SESSION["login"] = 1;
        $_SESSION["user"] = $user;
        $stmt = $conn->prepare(
-        "UPDATE login_username SET last_login = NOW() WHERE id = ?"
+        "UPDATE user SET last_login = NOW() WHERE id = ?"
        );
         $stmt->bind_param("i", $user["id"]);
         $stmt->execute();
