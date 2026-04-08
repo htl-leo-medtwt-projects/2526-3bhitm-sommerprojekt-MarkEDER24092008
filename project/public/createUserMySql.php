@@ -30,7 +30,7 @@ if ($conn->connect_error) {
         #Statement for insert the values of the new user
 
         $insertStatement = "INSERT INTO user (username, email, password, created_at, streak_count, last_login, xp) 
-                            VALUES ('$_username',$_email, '$_password', NOW(), 0, NOW(), 0);";   
+                            VALUES ('$_username','$_email', '$_password', NOW(), 0, NOW(), 0);";   
 
         if($_res = $conn->query($insertStatement)) {
             echo "<br>USER $_username has been added to the database. <br> Try to log in.";
