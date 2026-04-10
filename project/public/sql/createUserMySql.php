@@ -25,12 +25,12 @@ if ($conn->connect_error) {
         // }
         #create password hash from original password
         #VARCHAR 60 necessary, but officially PHP reccomendation: at least 255 characters
-        // $_passwortHash = password_hash($_passwort, PASSWORD_BCRYPT);
+        $_passwortHash = password_hash($_password, PASSWORD_BCRYPT);
 
         #Statement for insert the values of the new user
 
         $insertStatement = "INSERT INTO user (username, email, password, created_at, streak_count, last_login, xp, language_id) 
-                            VALUES ('$_username','$_email', '$_password', NOW(), 0, NOW(), 0, 0);";   
+                            VALUES ('$_username','$_email', '$_passwortHash', NOW(), 0, NOW(), 0, 0);";   
 
         if($_res = $conn->query($insertStatement)) {
             echo "<br>USER $_username has been added to the database. <br> Try to log in.";

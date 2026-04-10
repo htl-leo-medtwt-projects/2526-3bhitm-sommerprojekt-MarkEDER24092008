@@ -5,8 +5,8 @@ SESSION_START();
 
 $_db_host = "db_server";
 $_db_datenbank = "IndiGo";
-$_db_username = "root";
-$_db_passwort = "database-password";
+$_db_username = "super-root";
+$_db_passwort = "000";
 
 #open database connection
 $conn = new mysqli($_db_host, $_db_username, $_db_passwort, $_db_datenbank);
@@ -33,7 +33,7 @@ if (!empty($_POST["submit"])) {
 if($res->num_rows === 1) {
     $user = $res->fetch_assoc();
 
-    if(password_verify($passwort, $user["password"])) {
+    if(password_verify($_password, $user["password"])) {
        $_SESSION["login"] = 1;
        $_SESSION["user"] = $user;
        $stmt = $conn->prepare(
@@ -41,6 +41,8 @@ if($res->num_rows === 1) {
        );
         $stmt->bind_param("i", $user["id"]);
         $stmt->execute();
+       header("Location: sql/secretContent.php");
+       exit;
     }else {
         echo "<br> Wrong password. Try again.";
         include("../login_form.html");
@@ -56,10 +58,10 @@ $conn->close();
 
 #Is user already logged in???
 
-if(is_array($SESSION["login"]) && $_SESSION["login"] == 1) {
+if(is_array($_SESSION["login"]) && $_SESSION["login"] == 1) {
 
 #Todo: add program code for logged in user
-header("Location: secretContent.php");
+header("Location: sql/secretContent.php");
 }
 
 ?>

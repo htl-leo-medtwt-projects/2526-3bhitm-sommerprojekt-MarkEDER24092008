@@ -9,5 +9,5 @@ $username = htmlspecialchars($_SESSION["user"]["username"], ENT_QUOTES, "UTF-8")
 <p>Welcome <?php echo $username; ?>, you are logged in and can see this secret content.</p>
 
 <p> 
-    <a href="logout.php"> Logout</a>
+    <a href="sql/logout.php"> Logout</a>
 </p>
