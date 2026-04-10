@@ -29,16 +29,16 @@ if ($conn->connect_error) {
 
         #Statement for insert the values of the new user
 
-        $insertStatement = "INSERT INTO user (username, email, password, created_at, streak_count, last_login, xp) 
-                            VALUES ('$_username','$_email', '$_password', NOW(), 0, NOW(), 0);";   
+        $insertStatement = "INSERT INTO user (username, email, password, created_at, streak_count, last_login, xp, language_id) 
+                            VALUES ('$_username','$_email', '$_password', NOW(), 0, NOW(), 0, 0);";   
 
         if($_res = $conn->query($insertStatement)) {
             echo "<br>USER $_username has been added to the database. <br> Try to log in.";
-            include("login_form.html");
+            include("../login_form.html");
         }
             else {
             echo "<br> NO insertion. User could nor be added. Maybe user $_username aleady exists.";
-            include ("create_user_form.html");
+            include ("../create_user_form.html");
         }
     }
 

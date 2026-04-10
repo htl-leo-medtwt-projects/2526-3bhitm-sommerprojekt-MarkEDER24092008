@@ -43,11 +43,11 @@ if($res->num_rows === 1) {
         $stmt->execute();
     }else {
         echo "<br> Wrong password. Try again.";
-        include("login_form.html");
+        include("../login_form.html");
     }
 } else {
     echo "<br> No user found. Try again.";
-    include("login_form.html");
+    include("../login_form.html");
 }
 
 #close database
@@ -59,7 +59,7 @@ $conn->close();
 if(is_array($SESSION["login"]) && $_SESSION["login"] == 1) {
 
 #Todo: add program code for logged in user
-header("Location: secrecContent.php");
+header("Location: secretContent.php");
 }
 
 ?>
