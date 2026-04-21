@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create new User</title>
     <script src="./js/script.js" defer></script>
+    <link rel="stylesheet" href="./css/formStyle.css">
 </head>
 <body>
     <form method="POST" action="./sql/createUserMySql.php">
-        Username: <input type="text" name="username" required> <br>
-        Email: <input type="email" name="email"> <br>
-        Password: <input type="password" name="password" required id="passwordInput"> <br>
-        <input type="checkbox" onclick="togglePasswordVisibility()">Show Password <br>
+        <input placeholder="Username" type="text" name="username" required> <br>
+        <input placeholder="Email" type="email" name="email"> <br>
+        <div class="password-wrapper">
+            <input placeholder="Password" type="password" name="password" required id="passwordInput">
+            <img id="eye" onclick="togglePasswordVisibility()" src="./media/images/privacyHiding.png" alt="Show Password">
+        </div>
         <input type="submit" name="submit" value="Create New User">
     </form>
     

@@ -1,106 +1,53 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <link rel="stylesheet" href="./css/homeStyle.css">
+  <title>IndiGO–Home</title>
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
 
-<div style="display:flex;justify-content:center;padding:24px 0;">
-  <div class="phone-outer">
-    <div class="phone-inner">
-      <div class="content-area">
 
-        <button class="flag-btn" title="Sprache wechseln">🇬🇧</button>
+    <!-- Main Card -->
+    <div class="mainCard">
+      
 
-        <div class="path-wrap">
+      <!-- Timeline -->
+      <div class="languagePath">
 
-          <!-- Node 1: Lernen -->
-          <div style="position:relative;display:flex;align-items:center;">
-            <div class="node">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z"/>
-              </svg>
-            </div>
-          </div>
 
-          <div class="connector"></div>
-
-          <!-- Node 2: Schreiben -->
-          <div style="position:relative;display:flex;align-items:center;">
-            <div class="node">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-              </svg>
-            </div>
-          </div>
-
-          <div class="connector"></div>
-
-          <!-- Node 3: Hören -->
-          <div style="position:relative;display:flex;align-items:center;">
-            <div class="node">
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0014 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
-              </svg>
-            </div>
-          </div>
+        <div class="step">
+          <button class="lessonButton"><img src="./media/images/studyHat.png" alt="Learning exercise"></button>
         </div>
 
-        <!-- Inklingo peeking SVG -->
-        <div class="mascot-wrap">
-          <svg viewBox="0 0 200 160" xmlns="http://www.w3.org/2000/svg">
-            <!-- Body/head -->
-            <ellipse cx="100" cy="130" rx="80" ry="70" fill="#7B52D3"/>
-            <!-- Face highlight -->
-            <ellipse cx="100" cy="110" rx="60" ry="52" fill="#8B62E3"/>
-            <!-- Left eye white -->
-            <ellipse cx="72" cy="108" rx="18" ry="20" fill="white"/>
-            <!-- Right eye white -->
-            <ellipse cx="128" cy="108" rx="18" ry="20" fill="white"/>
-            <!-- Left pupil -->
-            <circle cx="75" cy="112" r="9" fill="#1a0a3a"/>
-            <!-- Right pupil -->
-            <circle cx="131" cy="112" r="9" fill="#1a0a3a"/>
-            <!-- Left pupil shine -->
-            <circle cx="70" cy="108" r="3" fill="white"/>
-            <!-- Right pupil shine -->
-            <circle cx="126" cy="108" r="3" fill="white"/>
-            <!-- Left brow -->
-            <path d="M58 92 Q72 84 86 90" stroke="#1a0a3a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-            <!-- Right brow -->
-            <path d="M114 90 Q128 84 142 92" stroke="#1a0a3a" stroke-width="3.5" fill="none" stroke-linecap="round"/>
-            <!-- Slight smile -->
-            <path d="M85 128 Q100 138 115 128" stroke="#1a0a3a" stroke-width="3" fill="none" stroke-linecap="round"/>
-          </svg>
+        <div class="step">
+          <button class="lessonButton"><img src="./media/images/pencil.png" alt="Writing exercise"></button>
+        </div>
+
+        <div class="step">
+          <button class="lessonButton"><img src="./media/images/speech.png" alt="Speaking exercise"></button>
         </div>
 
       </div>
 
-      <!-- Bottom nav -->
-      <div class="bottom-nav">
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
-        </div>
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94s-.02-.64-.07-.94l2.03-1.58a.49.49 0 00.12-.61l-1.92-3.32a.488.488 0 00-.59-.22l-2.39.96a7.01 7.01 0 00-1.62-.94l-.36-2.54a.484.484 0 00-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58a.49.49 0 00-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.37 1.04.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.57 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6a3.6 3.6 0 110-7.2 3.6 3.6 0 010 7.2z"/></svg>
-        </div>
-        <div class="nav-item">
-          <svg viewBox="0 0 24 24"><path d="M12 12c2.7 0 4.8-2.1 4.8-4.8S14.7 2.4 12 2.4 7.2 4.5 7.2 7.2 9.3 12 12 12zm0 2.4c-3.2 0-9.6 1.6-9.6 4.8v2.4h19.2v-2.4c0-3.2-6.4-4.8-9.6-4.8z"/></svg>
-        </div>
-        <a href="./streak.html">
-        <div class="nav-item nav-streak">
-          <span style="font-size:22px;"><img src="./media/images/fire.gif" alt="Fire" style="width: 24px; height: 24px; object-fit: cover;"></span>
-          <span class="streak-num">0</span>
-        </div>
-        </a>
+      <!-- Character -->
+      <div class="character">
+        <img src="./media/mascot/mascot_protoype_lookingUp.png" alt="">
       </div>
-
+      
+    
     </div>
-  </div>
-</div>
-  
+    <!-- Bottom Navigation -->
+    <nav class="bottomNav"
+      <button class="bottomNavButton"><img src="./media/images/menu.png" alt="Menu"></button>
+      <button class="bottomNavButton"><img src="./media/images/settings.png" alt="Settings"></button>
+      <button class="bottomNavButton"><img src="./media/images/profile.png" alt="Profile"></button>
+      <button class="bottomNavButton"><img src="./media/images/placeholderLanguage.png" alt="Language"></button>
+      <button class="bottomNavButton"><img src="./media/images/fire.gif" alt="Streak"></button>
+    </nav>
+
+
 </body>
 </html>
