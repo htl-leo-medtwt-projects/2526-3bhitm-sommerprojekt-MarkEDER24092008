@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link rel="stylesheet" href="./css/generalStyle.css">
+    <link rel="stylesheet" href="./css/settingsStyle.css">
+</head>
+<body>
+
+        <!-- Main Screen -->
+    <div class="settings-screen">
+
+        <!-- Back Button -->
+         <a class="backButton" href="./home.html">
+        <img src="./media/images/backButton.png" alt="Go Back">
+    </a>
+
+        <!-- Title -->
+        <h1 class="title">Settings</h1>
+
+        <!-- Settings Card -->
+        <section class="card" id="settings-card">
+
+            <!-- Sound Section -->
+            <div class="settings-group-sound">
+
+                <div class="icon">
+                    <img src="./media/images/speech.png" alt="Volume">
+                </div>
+
+                <div class="setting-row">
+                    <label for="volume">Volume:</label>
+                    <input type="range" id="volume" name="volume">
+                </div>
+
+                <div class="setting-row">
+                    <label for="sfx">SFX:</label>
+                    <input type="range" id="sfx" name="sfx">
+                </div>
+
+            </div>
+
+            <!-- Brightness Section -->
+            <div class="settings-group-brightness">
+
+                <div class="icon">
+                    <img src="./media/images/brightness.png" alt="Brightness">
+                </div>
+
+                <div class="setting-row">
+                    <label for="brightness">Brightness:</label>
+                    <input type="range" id="brightness" name="brightness">
+                </div>
+
+                <div class="setting-row">
+                    <label for="nightmode">Night Mode:</label>
+                    <input type="checkbox" id="nightmode" name="nightmode">
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+
+    <nav class="bottomNav">
+      <a href="./settings.html">
+        <div class="bottomNavButton"><img src="./media/images/settings.png" alt="Settings"></div>
+      </a>
+
+      
+      <a href="./profile.html">
+        <div class="bottomNavButton"><img src="./media/images/profile.png" alt="Profile"></div>
+      </a>
+
+      <a href="./language.html">
+        <div class="bottomNavButton"><img src="./media/images/placeholderLanguage.png" alt="Language"></div>
+      </a>
+
+      <a href="./streak.html">
+        <div class="bottomNavButton"><img src="./media/images/fire.gif" alt="Streak"></div>
+      </a>
+    </nav>
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+
+.language {
+    width: 100px;
+    height: 60px;
+    float: right;
+}
+
+
+
+
+
+.languagePath {
+    min-height: 100vh;  /* Instead of height: 100vh */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 20px;  /* Add padding to prevent edge cutting */
+    box-sizing: border-box;
+}
+
+.lessonButton {
+    border: none;
+    border-radius: 50%;
+}
+
+.lessonButton img {
+    width: 100px;
+    height: 100px;
+}
+
+.character {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.character img {
+    width: 30%;
+}

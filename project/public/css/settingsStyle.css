@@ -1,0 +1,35 @@
+
+.backButton img {
+    position: relative;
+    top: 20px;
+    left: 20px;
+    width: 60px;
+    height: 60px;
+}
+
+.icon img{
+    width: 40px;
+    height: 40px;
+}
+
+.settings-card {
+    background-color: white;
+    margin: 20px auto;  /* Center the card */
+    max-width: calc(100% - 40px);  /* Leave some margin on sides */
+    padding: 10px;
+    border-radius: 5px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+
+}
+
+.settings-group-sound ,.settings-group-brightness {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
