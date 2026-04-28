@@ -6,17 +6,21 @@
     <title>Create new User</title>
     <script src="./js/script.js" defer></script>
     <link rel="stylesheet" href="./css/formStyle.css">
+    <link rel="stylesheet" href="./css/generalStyle.css">
 </head>
 <body>
-    <form method="POST" action="./sql/createUserMySql.php">
-        <input placeholder="Username" type="text" name="username" required> <br>
-        <input placeholder="Email" type="email" name="email"> <br>
-        <div class="password-wrapper">
-            <input placeholder="Password" type="password" name="password" required id="passwordInput">
-            <img id="eye" onclick="togglePasswordVisibility()" src="./media/images/privacyHiding.png" alt="Show Password">
-        </div>
-        <input type="submit" name="submit" value="Create New User">
-    </form>
+    <h1 class="title">Create New User</h1>
+    <div class="card">
+        <form method="POST" action="./sql/createUserMySql.php">
+            <input placeholder="Username" type="text" name="username" required> <br>
+            <input placeholder="Email" type="email" name="email"> <br>
+            <div class="password-wrapper">
+                <input placeholder="Password" type="password" name="password" required id="passwordInput">
+                <img id="eye" onclick="togglePasswordVisibility()" src="./media/images/privacyHiding.png" alt="Show Password">
+            </div>
+            <input type="submit" name="submit" value="Create New User">
+        </form>
+    </div>
     
 </body>
 </html>
