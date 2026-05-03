@@ -1,20 +1,10 @@
 <?php 
 SESSION_START();
 
-$_db_host = "db_server";
-$_db_datenbank = "IndiGo";
-$_db_username = "super-root";
-$_db_passwort = "000";
+// Include database configuration
+require_once("dbConfig.php");
 
-#open database connection
-$conn = new mysqli($_db_host, $_db_username, $_db_passwort, $_db_datenbank);
-
-// check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-    }
-
-    if(!empty($_POST["submit"])) {
+if(!empty($_POST["submit"])) {
         $_username = $conn-> real_escape_string($_POST["username"]);
         $_password = $conn-> real_escape_string($_POST["password"]);
         $_email = htmlspecialchars($conn-> real_escape_string($_POST["email"]));

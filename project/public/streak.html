@@ -7,58 +7,24 @@
   <title>Your Streak</title>
   <link rel="stylesheet" href="./css/streakStyle.css">
   <link rel="stylesheet" href="./css/generalStyle.css">
+  <script src="./js/streak.js" defer></script>
 </head>
 <body>
 
 <div style="display:flex;justify-content:center;">
 
-      <button class="back-btn" onclick="history.back()">
-        <svg viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
-      </button>
+      <a class="backButton" href="./home.html">
+        <img src="./media/images/backButton.png" alt="Go Back">
+    </a>
 
       <div class="streak-title">Your Streak: <span id="streak-num">99</span>!</div>
 
       <div class="card">
         <div class="fire-wrap" id="fire" onclick="popFire()"><img src="./media/images/fire.gif" alt=""></div>
-        <div class="timer-text">Time left: (<span id="timer">15:00</span>)</div>
+        <div class="timer-text">Time left: (<span id="timer">--:--</span>)</div>
         <div class="hurry" id="hurry-text">Hurry!</div>
       </div>
     </div>
 
-<script>
-  let totalSeconds = 15 * 60;
-  let timerInterval;
-
-  function formatTime(s) {
-    const m = Math.floor(s / 60);
-    const sec = s % 60;
-    return m + ':' + String(sec).padStart(2, '0');
-  }
-
-  function tick() {
-    totalSeconds--;
-    document.getElementById('timer').textContent = formatTime(totalSeconds);
-    if (totalSeconds <= 0) {
-      clearInterval(timerInterval);
-      document.getElementById('timer').textContent = '0:00';
-      document.getElementById('hurry-text').textContent = 'Too late!';
-    } else if (totalSeconds <= 60) {
-      document.getElementById('hurry-text').textContent = 'HURRY!!';
-    }
-  }
-
-  timerInterval = setInterval(tick, 1000);
-
-  function popFire() {
-    const el = document.getElementById('fire');
-    el.classList.remove('popped');
-    void el.offsetWidth;
-    el.classList.add('popped');
-    el.addEventListener('animationend', () => el.classList.remove('popped'), { once: true });
-  }
-</script>
-
-
-  
 </body>
 </html>

@@ -1,20 +1,8 @@
 <?php 
 SESSION_START();
 
-//mySQL database information
-
-$_db_host = "db_server";
-$_db_datenbank = "IndiGo";
-$_db_username = "super-root";
-$_db_passwort = "000";
-
-#open database connection
-$conn = new mysqli($_db_host, $_db_username, $_db_passwort, $_db_datenbank);
-
-// check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+// Include database configuration
+require_once("dbConfig.php");
 
 if (!empty($_POST["submit"])) {
     $_username = $_POST["username"];
