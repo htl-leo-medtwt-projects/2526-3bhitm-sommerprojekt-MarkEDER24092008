@@ -10,8 +10,8 @@ require_once("dbConfig.php");
 // Get user ID from session
 $user_id = $_SESSION["user"]["id"];
 
-// Query to get the last attempt time from progress table
-$stmt = $conn->prepare("SELECT lastattempt FROM progress WHERE user_id = ? ORDER BY lastattempt DESC LIMIT 1");
+// Query to get the progress data from progress table
+$stmt = $conn->prepare("SELECT completed, score, last_attempt FROM progress WHERE user_id = ? ORDER BY last_attempt DESC LIMIT 1");
 
 if (!$stmt) {
     die(json_encode(array("error" => "Prepare failed: " . $conn->error)));
@@ -23,19 +23,25 @@ $res = $stmt->get_result();
 
 if ($res->num_rows > 0) {
     $row = $res->fetch_assoc();
-    $last_attempt = $row["lastattempt"];
+    $completed = $row["completed"];
+    $score = $row["score"];
+    $last_attempt = $row["last_attempt"];
     
-    // Return the last attempt time as JSON
+    // Return the progress data as JSON
     echo json_encode(array(
         "success" => true,
-        "lastattempt" => $last_attempt,
+        "completed" => (bool)$completed,
+        "score" => (int)$score,
+        "last_attempt" => $last_attempt,
         "timestamp" => strtotime($last_attempt)
     ));
 } else {
     // No previous attempt found
     echo json_encode(array(
         "success" => true,
-        "lastattempt" => null,
+        "completed" => false,
+        "score" => 0,
+        "last_attempt" => null,
         "timestamp" => null
     ));
 }

@@ -3,7 +3,7 @@ SESSION_START();
 
 // Include database configuration
 require_once("dbConfig.php");
-
+$res = null;
 if (!empty($_POST["submit"])) {
     $_username = $_POST["username"];
     $_password = $_POST["password"];

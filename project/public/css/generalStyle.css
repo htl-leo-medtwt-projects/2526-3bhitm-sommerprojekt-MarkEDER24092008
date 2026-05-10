@@ -6,8 +6,10 @@
 body {
     background-color: var(--background-color);
     overflow-x: hidden;  /* Prevent horizontal scroll */
+    overflow-y: hidden;  /* Prevent vertical scroll */
     margin: 0;
     padding: 0;
+    height: 100vh;  /* Ensure body takes full viewport height */
 }
 
 @font-face {
@@ -55,10 +57,14 @@ body {
 
 .mainCard {
     background-color: white;
-    margin: 20px auto;  /* Center the card */
-    max-width: calc(100% - 40px);  /* Leave some margin on sides */
+    margin: 10px auto;  /* Reduced margin */
+    max-width: calc(100% - 20px);  /* Leave some margin on sides */
     padding: 10px;
     border-radius: 5px;
+    height: calc(100vh - 120px);  /* Fit within viewport minus bottom nav */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;  /* Prevent overflow within card */
 }
 
 
@@ -68,8 +74,13 @@ body {
     align-items: center;
     background-color: white;
     border-radius: 5px;
-    margin: 10px;
-    
+    margin: 5px 10px;  /* Reduced margin */
+    padding: 5px;  /* Reduced padding */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 .bottonNavButton {
@@ -83,11 +94,21 @@ body {
     width: 50px;
     height: 50px;
 
-}
+}15px;  /* Even smaller gap on mobile */
+        height: calc(100vh - 180px);  /* Adjust for mobile */
+        padding: 10px;
+    }
 
-/* media screen von Blackbox unterstützt */
-@media screen and (max-width: 600px) {
-    .languagePath {
+    .mainCard {
+        height: calc(100vh - 100px);
+        margin: 5px auto;
+        max-width: calc(100% - 10px);
+    }
+
+    .character img {
+        width: 20%;
+        max-height: 120px;
+    }
         gap: 20px;
         min-height: auto;  /* Let it size naturally on mobile */
         padding: 20px;

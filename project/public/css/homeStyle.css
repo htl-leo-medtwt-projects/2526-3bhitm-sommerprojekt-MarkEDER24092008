@@ -10,14 +10,15 @@
 
 
 .languagePath {
-    min-height: 100vh;  /* Instead of height: 100vh */
+    height: calc(100vh - 200px);  /* Adjust height to fit within viewport minus nav and margins */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
-    padding: 20px;  /* Add padding to prevent edge cutting */
+    gap: 30px;  /* Reduced gap for better fit */
+    padding: 20px;
     box-sizing: border-box;
+    overflow-y: auto;  /* Allow scrolling within this container if needed */
 }
 
 .lessonButton {
@@ -37,5 +38,6 @@
 }
 
 .character img {
-    width: 30%;
+    width: 25%;  /* Slightly smaller character */
+    max-height: 150px;  /* Limit height */
 }

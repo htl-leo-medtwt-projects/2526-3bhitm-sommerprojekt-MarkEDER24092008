@@ -1,0 +1,32 @@
+.streak-title {
+    font-family: bubbles, sans-serif;
+    color: #7e52cf;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+.fire-wrap {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.fire-wrap:hover {
+    transform: scale(1.05);
+}
+
+.pop-animation {
+    animation: pop 0.3s ease-out;
+}
+
+@keyframes pop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
