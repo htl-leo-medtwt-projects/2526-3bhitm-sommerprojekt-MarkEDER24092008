@@ -5,10 +5,6 @@
     float: right;
 }
 
-
-
-
-
 .languagePath {
     height: calc(100vh - 200px);  /* Adjust height to fit within viewport minus nav and margins */
     display: flex;
@@ -24,6 +20,11 @@
 .lessonButton {
     border: none;
     border-radius: 50%;
+    transition: transform 0.3s ease;
+}
+
+.lessonButton:hover {
+    transform: scale(1.05);
 }
 
 .lessonButton img {
@@ -40,4 +41,17 @@
 .character img {
     width: 25%;  /* Slightly smaller character */
     max-height: 150px;  /* Limit height */
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-10px);
+    }
+    60% {
+        transform: translateY(-5px);
+    }
 }

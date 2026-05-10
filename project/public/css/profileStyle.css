@@ -1,6 +1,39 @@
 
 
-.language-info img{
+.language-info img {
     width: 100px;
     height: 60px;
+}
+
+.signout-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.signout-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.05);
+}
+
+.profile-icon {
+    font-size: 50px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
 }

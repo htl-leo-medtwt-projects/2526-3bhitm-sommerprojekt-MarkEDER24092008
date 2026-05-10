@@ -1,5 +1,5 @@
 
-.backButton img {
+.homeButton img {
     position: relative;
     top: 20px;
     left: 20px;
@@ -7,7 +7,7 @@
     height: 60px;
 }
 
-.icon img{
+.icon img {
     width: 40px;
     height: 40px;
 }
@@ -18,18 +18,32 @@
     max-width: calc(100% - 40px);  /* Leave some margin on sides */
     padding: 10px;
     border-radius: 5px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 20px;
-
 }
 
-.settings-group-sound ,.settings-group-brightness {
+.settings-group-sound, .settings-group-brightness {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px;
+}
+
+input[type="range"] {
+    transition: transform 0.2s ease;
+}
+
+input[type="range"]:hover {
+    transform: scale(1.05);
+}
+
+input[type="checkbox"] {
+    transition: transform 0.2s ease;
+}
+
+input[type="checkbox"]:hover {
+    transform: scale(1.2);
 }

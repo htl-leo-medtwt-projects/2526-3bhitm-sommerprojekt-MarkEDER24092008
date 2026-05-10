@@ -3,15 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>Login</title>
+    <link rel="stylesheet" href="./css/generalStyle.css">
+    <link rel="stylesheet" href="./css/formStyle.css">
     <script src="./js/script.js" defer></script>
 </head>
 <body>
-    <form method="POST" action="./sql/loginMySql.php">
-        Username: <input type="text" name="username" required> <br>
-        Password: <input type="password" name="password" required id="passwordInput"> <br>
-        <input type="checkbox" onclick="togglePasswordVisibility()">Show Password <br>
-        <input type="submit" name="submit" value="Login">
-    </form>
+    <div class="card">
+        <form method="POST" action="./sql/loginMySql.php">
+            Username: <input type="text" name="username" required> <br>
+            Password: <input type="password" name="password" required id="passwordInput"> <br>
+            <input type="checkbox" onclick="togglePasswordVisibility()">Show Password <br>
+            <input type="submit" name="submit" value="Login">
+        </form>
+    </div>
+
+    <nav class="bottomNav">
+      <a href="./home.html">
+        <div class="bottomNavButton"><img src="./media/images/home.png" alt="Home"></div>
+      </a>
+
+      <a href="./settings.html">
+        <div class="bottomNavButton"><img src="./media/images/settings.png" alt="Settings"></div>
+      </a>
+
+      <a href="./profile.html">
+        <div class="bottomNavButton"><img src="./media/images/profile.png" alt="Profile"></div>
+      </a>
+
+      <a href="./language.html">
+        <div class="bottomNavButton"><img src="./media/images/placeholderLanguage.png" alt="Language"></div>
+      </a>
+
+      <a href="./streak.html">
+        <div class="bottomNavButton"><img src="./media/images/fire.gif" alt="Streak"></div>
+      </a>
+    </nav>
 </body>
 </html>

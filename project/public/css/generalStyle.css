@@ -25,8 +25,7 @@ body {
     font-size: 50px;
 }
 
-
-.backButton img {
+.homeButton img {
     position: relative;
     top: 20px;
     left: 20px;
@@ -40,7 +39,6 @@ body {
     max-width: calc(100% - 40px);  /* Leave some margin on sides */
     padding: 10px;
     border-radius: 5px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,9 +49,6 @@ body {
 .card div {
     text-align: center;
 }
-
-
-
 
 .mainCard {
     background-color: white;
@@ -66,7 +61,6 @@ body {
     flex-direction: column;
     overflow: hidden;  /* Prevent overflow within card */
 }
-
 
 .bottomNav {
     display: flex;
@@ -83,22 +77,26 @@ body {
     z-index: 1000;
 }
 
-.bottonNavButton {
+.bottomNavButton {
     border: none;
     cursor: pointer;
     border-radius: 50%;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-.bottomNav img{
+.bottomNavButton:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+.bottomNav img {
     padding: 10px;
     width: 50px;
     height: 50px;
+}
 
-}15px;  /* Even smaller gap on mobile */
-        height: calc(100vh - 180px);  /* Adjust for mobile */
-        padding: 10px;
-    }
-
+/* Mobile adjustments */
+@media (max-width: 768px) {
     .mainCard {
         height: calc(100vh - 100px);
         margin: 5px auto;
@@ -109,9 +107,55 @@ body {
         width: 20%;
         max-height: 120px;
     }
+
+    .card {
         gap: 20px;
         min-height: auto;  /* Let it size naturally on mobile */
         padding: 20px;
     }
-    /* rest of your rules */
+}
+
+/* Animations and Transitions */
+
+.card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+.mainCard {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.homeButton img {
+    transition: transform 0.3s ease;
+}
+
+.homeButton img:hover {
+    transform: scale(1.1);
+}
+
+button {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+input[type="submit"] {
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+    transform: scale(1.05);
 }
