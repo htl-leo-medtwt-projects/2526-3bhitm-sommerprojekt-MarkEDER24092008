@@ -1,0 +1,118 @@
+/* Language Select Page Styles */
+
+.languageSelectContainer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.languageSelectCard {
+    background-color: white;
+    border-radius: 5px;
+    padding: 40px;
+    max-width: 600px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.languageSelectTitle {
+    font-family: bubbles;
+    color: #a581e8;
+    font-size: 42px;
+    margin: 0;
+    padding: 0;
+}
+
+.languageSelectDescription {
+    color: #333;
+    font-size: 16px;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+}
+
+.languageOptions {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    align-items: center;
+}
+
+.languageForm {
+    width: 100%;
+}
+
+.languageButton {
+    width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border: 2px solid #a581e8;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    font-size: 18px;
+    font-weight: 600;
+    color: #a581e8;
+}
+
+.languageButton:hover {
+    background-color: #a581e8;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(165, 129, 232, 0.3);
+}
+
+.languageButton img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+}
+
+.languageButton span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .languageSelectCard {
+        padding: 30px 20px;
+        gap: 25px;
+    }
+
+    .languageSelectTitle {
+        font-size: 32px;
+    }
+
+    .languageSelectDescription {
+        font-size: 14px;
+    }
+
+    .languageButton {
+        padding: 15px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .languageButton img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .languageButton span {
+        text-align: center;
+    }
+}

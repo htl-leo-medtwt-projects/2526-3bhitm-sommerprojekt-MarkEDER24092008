@@ -21,7 +21,7 @@ if (!empty($_POST["submit"])) {
 if($res->num_rows === 1) {
     $user = $res->fetch_assoc();
 
-    if(password_verify($_password, $user["passwort"])) {
+    if(password_verify($_password, $user["password_hash"])) {
        $_SESSION["login"] = 1;
        $_SESSION["user"] = $user;
        $stmt = $conn->prepare(
@@ -29,7 +29,7 @@ if($res->num_rows === 1) {
        );
         $stmt->bind_param("i", $user["id"]);
         $stmt->execute();
-       header("Location: sql/secretContent.php");
+       header("Location: ../home.html");
        exit;
     }else {
         echo "<br> Wrong password. Try again.";

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Language – IndiGO</title>
+    <link rel="stylesheet" href="./css/generalStyle.css">
+    <link rel="stylesheet" href="./css/languageSelectStyle.css">
+</head>
+<body>
+    <div class="languageSelectContainer">
+        <div class="languageSelectCard">
+            <!-- Title -->
+            <h1 class="languageSelectTitle">Choose Your Language</h1>
+            
+            <!-- Description -->
+            <p class="languageSelectDescription">
+                Select the language you'd like to learn with IndiGO!
+            </p>
+
+            <!-- Language Options -->
+            <div class="languageOptions">
+                <!-- English -->
+                <form method="POST" action="./sql/selectLanguage.php" class="languageForm">
+                    <input type="hidden" name="language_id" value="1">
+                    <input type="hidden" name="language_name" value="english">
+                    <button type="submit" class="languageButton">
+                        <img src="./media/images/languages/english_select_button.png" alt="English">
+                        <span>English</span>
+                    </button>
+                </form>
+
+                <!-- German -->
+                <form method="POST" action="./sql/selectLanguage.php" class="languageForm">
+                    <input type="hidden" name="language_id" value="2">
+                    <input type="hidden" name="language_name" value="german">
+                    <button type="submit" class="languageButton">
+                        <img src="./media/images/languages/german_select_button.png" alt="German">
+                        <span>German</span>
+                    </button>
+                </form>
+
+                <!-- Italian -->
+                <form method="POST" action="./sql/selectLanguage.php" class="languageForm">
+                    <input type="hidden" name="language_id" value="3">
+                    <input type="hidden" name="language_name" value="italian">
+                    <button type="submit" class="languageButton">
+                        <img src="./media/images/languages/italian_select_button.png" alt="Italian">
+                        <span>Italian</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
