@@ -22,9 +22,9 @@ if(ini_get("session.use_cookies")) {
 
 session_destroy();
 
-/* forward to login */
+/* forward to welcome page */
 
-header("Location: login_form.html");
+header("Location: ../welcome.html");
 exit;
 
 ?>

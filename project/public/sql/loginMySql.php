@@ -21,7 +21,7 @@ if (!empty($_POST["submit"])) {
 if($res->num_rows === 1) {
     $user = $res->fetch_assoc();
 
-    if(password_verify($_password, $user["password"])) {
+    if(password_verify($_password, $user["passwort"])) {
        $_SESSION["login"] = 1;
        $_SESSION["user"] = $user;
        $stmt = $conn->prepare(

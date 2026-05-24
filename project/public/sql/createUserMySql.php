@@ -19,7 +19,7 @@ if(!empty($_POST["submit"])) {
 
         #Statement for insert the values of the new user
 
-        $insertStatement = "INSERT INTO user (username, email, password, created_at, streak_count, last_login, xp, language_id) 
+        $insertStatement = "INSERT INTO user (username, email, passwort, created_at, streak_count, last_login, xp, language_id) 
                             VALUES ('$_username','$_email', '$_passwortHash', NOW(), 0, NOW(), 0, 0);";   
 
         if($_res = $conn->query($insertStatement)) {
