@@ -7,15 +7,36 @@
     <link rel="stylesheet" href="./css/generalStyle.css">
     <link rel="stylesheet" href="./css/formStyle.css">
     <script src="./js/script.js" defer></script>
+    <script src="./js/passwordStrength.js" defer></script>
 </head>
 <body>
     <div class="card">
         <form method="POST" action="./sql/loginMySql.php">
-            Username: <input type="text" name="username" required> <br>
+            Username: <input type="text" name="username" required id="usernameInput"> <br>
             Password: <input type="password" name="password" required id="passwordInput"> <br>
+            <div id="developerModeIndicator" style="display: none; text-align: center; margin: 10px 0; font-size: 12px; color: #a581e8; font-weight: bold;">
+                🔧 Developer Mode Detected
+            </div>
             <input type="checkbox" onclick="togglePasswordVisibility()">Show Password <br>
             <input type="submit" name="submit" value="Login">
         </form>
     </div>
+
+    <script>
+        // Detect developer mode (admin/0)
+        document.addEventListener("DOMContentLoaded", function() {
+            const usernameInput = document.getElementById("usernameInput");
+            const passwordInput = document.getElementById("passwordInput");
+            const devIndicator = document.getElementById("developerModeIndicator");
+
+            function checkDeveloperMode() {
+                const isDev = usernameInput.value.toLowerCase() === "admin" && passwordInput.value === "0";
+                devIndicator.style.display = isDev ? "block" : "none";
+            }
+
+            usernameInput.addEventListener("input", checkDeveloperMode);
+            passwordInput.addEventListener("input", checkDeveloperMode);
+        });
+    </script>
 </body>
 </html>
