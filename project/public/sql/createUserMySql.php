@@ -40,7 +40,7 @@ function validatePasswordStrength($password, $username) {
 if(!empty($_POST["submit"])) {
         $_username = $conn->real_escape_string($_POST["username"]);
         $_password = $conn->real_escape_string($_POST["password"]);
-        $_email = htmlspecialchars($conn->real_escape_string($_POST["email"]));
+        $_email = NULL; // Email not collected during signup, users can set it later for password reset
         
         // Validate password strength on server-side
         $passwordValidation = validatePasswordStrength($_password, $_username);
@@ -63,7 +63,7 @@ if(!empty($_POST["submit"])) {
         #Statement for insert the values of the new user
 
         $insertStatement = "INSERT INTO user (username, email, password_hash, created_at, streak_count, last_login, xp, language_id) 
-                            VALUES ('$_username','$_email', '$_passwortHash', NOW(), 0, NOW(), 0, -1);";
+                            VALUES ('$_username', NULL, '$_passwortHash', NOW(), 0, NOW(), 0, -1);";
 
         if($_res = $conn->query($insertStatement)) {
             $_SESSION['username'] = $_username;
