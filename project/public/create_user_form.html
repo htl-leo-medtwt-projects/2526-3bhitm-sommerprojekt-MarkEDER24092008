@@ -11,6 +11,7 @@
 </head>
 <body>
     <h1 class="title">Create New User</h1>
+    <img class="back-button" src="./media/images/backButton.png" alt="Go Back" onclick="window.history.back()">
     <div class="card">
         <form method="POST" action="./sql/createUserMySql.php" onsubmit="return validateFormBeforeSubmit(event)">
             <input placeholder="Username" type="text" name="username" required id="usernameInput"> <br>

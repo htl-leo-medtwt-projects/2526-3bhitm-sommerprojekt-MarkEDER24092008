@@ -25,6 +25,16 @@ body {
     font-size: 50px;
 }
 
+.back-button {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: 20px;
+    left: 20px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
 .homeButton img {
     position: relative;
     top: 20px;
