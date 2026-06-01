@@ -1,49 +1,301 @@
 
-.homeButton img {
-    position: relative;
-    top: 20px;
-    left: 20px;
-    width: 60px;
-    height: 60px;
+/* ============================================
+   LIGHT MODE (Default)
+   ============================================ */
+
+:root[data-theme="light"],
+:root:not([data-theme]) {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-purple: #7e52cf;
+    --accent-purple-dark: #6a3fa6;
+    --accent-gray: #e0e0e0;
+}
+
+/* ============================================
+   DARK MODE (Night Mode)
+   ============================================ */
+
+:root[data-theme="dark"] {
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-purple: #8b5cf6;
+    --accent-purple-dark: #a78bfa;
+    --accent-gray: #404040;
+}
+
+/* ============================================
+   GENERAL STYLES
+   ============================================ */
+
+.settings-screen {
+    background-color: var(--bg-secondary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.title {
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.settings-card,
+.card {
+    background-color: var(--bg-primary);
+    border: 2px solid var(--accent-gray);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    margin: 20px auto;
+    max-width: calc(100% - 40px);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.settings-group-sound, 
+.settings-group-brightness {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+    max-width: 400px;
 }
 
 .icon img {
     width: 40px;
     height: 40px;
+    filter: opacity(0.8);
 }
 
-.settings-card {
-    background-color: white;
-    margin: 20px auto;  /* Center the card */
-    max-width: calc(100% - 40px);  /* Leave some margin on sides */
-    padding: 10px;
-    border-radius: 5px;
+.setting-row {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     gap: 20px;
 }
 
-.settings-group-sound, .settings-group-brightness {
+.setting-row label {
+    color: var(--text-primary);
+    font-weight: 500;
+    min-width: 120px;
+    transition: color 0.3s ease;
+}
+
+.night-mode-row {
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+/* ============================================
+   SLIDER STYLING
+   ============================================ */
+
+.slider-container {
+    flex: 1;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 20px;
+    gap: 12px;
+    min-width: 200px;
 }
 
 input[type="range"] {
-    transition: transform 0.2s ease;
+    flex: 1;
+    min-width: 150px;
+    height: 8px;
+    border-radius: 5px;
+    background: linear-gradient(to right, #7e52cf 0%, #7e52cf 100%, #e0e0e0 100%, #e0e0e0 100%);
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    cursor: pointer;
+    transition: background 0.1s ease;
 }
 
-input[type="range"]:hover {
-    transform: scale(1.05);
+/* Webkit browsers (Chrome, Safari, Edge) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7e52cf 0%, #6a3fa6 100%);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(126, 82, 207, 0.4);
+    transition: all 0.2s ease;
+    border: 2px solid #ffffff;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    box-shadow: 0 4px 12px rgba(126, 82, 207, 0.6);
+    transform: scale(1.1);
+}
+
+input[type="range"]::-webkit-slider-thumb:active {
+    box-shadow: 0 2px 6px rgba(126, 82, 207, 0.8);
+    transform: scale(0.95);
+}
+
+/* Firefox */
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #7e52cf 0%, #6a3fa6 100%);
+    cursor: pointer;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 8px rgba(126, 82, 207, 0.4);
+    transition: all 0.2s ease;
+}
+
+input[type="range"]::-moz-range-thumb:hover {
+    box-shadow: 0 4px 12px rgba(126, 82, 207, 0.6);
+    transform: scale(1.1);
+}
+
+input[type="range"]::-moz-range-thumb:active {
+    box-shadow: 0 2px 6px rgba(126, 82, 207, 0.8);
+    transform: scale(0.95);
+}
+
+/* Slider track styling for Firefox */
+input[type="range"]::-moz-range-track {
+    background: transparent;
+    border: none;
+}
+
+input[type="range"]::-moz-range-progress {
+    background: #7e52cf;
+    height: 8px;
+    border-radius: 5px;
+}
+
+/* Dark mode slider styling */
+:root[data-theme="dark"] input[type="range"] {
+    background: linear-gradient(to right, #8b5cf6 0%, #8b5cf6 100%, #404040 100%, #404040 100%);
+}
+
+:root[data-theme="dark"] input[type="range"]::-webkit-slider-thumb {
+    background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%);
+    box-shadow: 0 2px 8px rgba(139, 92, 246, 0.5);
+    border-color: #2a2a2a;
+}
+
+:root[data-theme="dark"] input[type="range"]::-moz-range-progress {
+    background: #8b5cf6;
+}
+
+.slider-value {
+    color: var(--accent-purple);
+    font-weight: bold;
+    min-width: 45px;
+    text-align: right;
+    font-size: 14px;
+    transition: color 0.2s ease;
+}
+
+:root[data-theme="dark"] .slider-value {
+    color: #a78bfa;
+}
+
+/* ============================================
+   CHECKBOX STYLING (Night Mode Toggle)
+   ============================================ */
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
 input[type="checkbox"] {
-    transition: transform 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    width: 50px;
+    height: 28px;
+    background: var(--accent-gray);
+    border: 2px solid var(--text-secondary);
+    border-radius: 14px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+    outline: none;
+}
+
+input[type="checkbox"]::before {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #ffffff;
+    top: 2px;
+    left: 2px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+input[type="checkbox"]:checked {
+    background: var(--accent-purple);
+    border-color: var(--accent-purple);
+}
+
+input[type="checkbox"]:checked::before {
+    left: 24px;
+    background: #ffffff;
 }
 
 input[type="checkbox"]:hover {
-    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(126, 82, 207, 0.3);
+}
+
+input[type="checkbox"]:checked:hover {
+    box-shadow: 0 0 10px rgba(126, 82, 207, 0.5);
+}
+
+.checkbox-label {
+    color: var(--text-secondary);
+    font-size: 12px;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 600px) {
+    .settings-group-sound, 
+    .settings-group-brightness {
+        max-width: 90vw;
+    }
+
+    .setting-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .slider-container {
+        width: 100%;
+    }
+
+    input[type="range"] {
+        min-width: 100%;
+    }
+}
+
+/* ============================================
+   TRANSITIONS
+   ============================================ */
+
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }

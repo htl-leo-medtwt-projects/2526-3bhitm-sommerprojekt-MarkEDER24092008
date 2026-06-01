@@ -1,15 +1,39 @@
 :root {
     --background-color: #a581e8;
 }
+
+/* Light Mode Colors */
+:root[data-theme="light"],
+:root:not([data-theme]) {
+    --bg-body: #a581e8;
+    --bg-card: #ffffff;
+    --text-primary: #333333;
+    --text-secondary: #666666;
+    --accent-purple: #7e52cf;
+    --nav-bg: #ffffff;
+}
+
+/* Dark Mode Colors */
+:root[data-theme="dark"] {
+    --bg-body: #5a3a8f;
+    --bg-card: #2a2a2a;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --accent-purple: #6b4fa1;
+    --nav-bg: #1a1a1a;
+}
+
 /* Positionierung & media von KI unterstützt */
 
 body {
-    background-color: var(--background-color);
+    background-color: var(--bg-body);
+    color: var(--text-primary);
     overflow-x: hidden;  /* Prevent horizontal scroll */
     overflow-y: hidden;  /* Prevent vertical scroll */
     margin: 0;
     padding: 0;
     height: 100vh;  /* Ensure body takes full viewport height */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @font-face {
@@ -19,10 +43,11 @@ body {
 
 .title {
     font-family: bubbles;
-    color: white;
+    color: var(--text-primary);
     text-align: center;
     margin: 50px;
     font-size: 50px;
+    transition: color 0.3s ease;
 }
 
 .back-button {
@@ -44,7 +69,8 @@ body {
 }
 
 .card {
-    background-color: white;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
     margin: 20px 25vw;
     padding: 10px;
     border-radius: 5px;
@@ -53,6 +79,7 @@ body {
     justify-content: center;
     align-items: center;
     gap: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .card div {
@@ -60,7 +87,8 @@ body {
 }
 
 .mainCard {
-    background-color: white;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
     margin: 10px auto;  /* Reduced margin */
     max-width: calc(100% - 20px);  /* Leave some margin on sides */
     padding: 10px;
@@ -69,13 +97,15 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;  /* Prevent overflow within card */
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .bottomNav {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--nav-bg);
+    color: var(--text-primary);
     border-radius: 5px;
     margin: 5px 10px;  /* Reduced margin */
     padding: 5px;  /* Reduced padding */
@@ -84,6 +114,8 @@ body {
     left: 0;
     right: 0;
     z-index: 1000;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-top: 1px solid var(--text-secondary);
 }
 
 .bottomNavButton {
@@ -183,9 +215,10 @@ input[type="submit"]:hover {
 
 .language-title {
     font-family: bubbles, sans-serif;
-    color: #7e52cf;
+    color: var(--accent-purple);
     text-align: center;
     font-size: 36px;
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    transition: color 0.3s ease;
 }

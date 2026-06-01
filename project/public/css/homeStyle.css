@@ -21,6 +21,8 @@
     border: none;
     border-radius: 50%;
     transition: transform 0.3s ease;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .lessonButton:hover {
