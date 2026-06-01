@@ -116,7 +116,7 @@ if(!empty($_POST["submit"])) {
             echo "<h2 style='color: #28a745;'>✓ Email Sent!</h2>";
             echo "<p>Check your email for instructions to reset your password.</p>";
             echo "<p style='color: #666; font-size: 14px; margin-top: 20px;'>The reset link will expire in 1 hour.</p>";
-            echo "<a href='./login_form.html' style='display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #a581e8; color: white; text-decoration: none; border-radius: 5px;'>Back to Login</a>";
+            echo "<a href='../login_form.html' style='display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #a581e8; color: white; text-decoration: none; border-radius: 5px;'>Back to Login</a>";
             echo "</div>";
         } else {
             echo "<div style='text-align: center; padding: 40px 20px;'>";
@@ -132,7 +132,7 @@ if(!empty($_POST["submit"])) {
         echo "<h2 style='color: #28a745;'>✓ Email Sent!</h2>";
         echo "<p>If an account exists with this email, you'll receive reset instructions.</p>";
         echo "<p style='color: #666; font-size: 14px; margin-top: 20px;'>Check your email and spam folder.</p>";
-        echo "<a href='./login_form.html' style='display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #a581e8; color: white; text-decoration: none; border-radius: 5px;'>Back to Login</a>";
+        echo "<a href='../login_form.html' style='display: inline-block; margin-top: 20px; padding: 10px 20px; background-color: #a581e8; color: white; text-decoration: none; border-radius: 5px;'>Back to Login</a>";
         echo "</div>";
     }
 

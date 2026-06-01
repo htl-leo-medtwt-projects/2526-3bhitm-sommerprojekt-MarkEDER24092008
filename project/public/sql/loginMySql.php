@@ -24,12 +24,11 @@ if (!empty($_POST["submit"])) {
             "language_id" => -1
         ];
         $_SESSION["developer_mode"] = true;
-        echo "<div style='text-align: center; padding: 20px; background-color: #f0f8ff; border: 2px solid #a581e8; border-radius: 5px; margin: 20px;'>";
-        echo "<p style='color: #a581e8; font-weight: bold; font-size: 16px;'>🔧 Developer Mode Activated</p>";
+        echo "<div style='text-align: center; padding: 20px; background-color: #f0f8ff; border: 2px solid #a581e8; border-radius: 5px; margin: 20px; height:90%;'>";
+        echo "<p style='color: #a581e8; font-weight: bold; font-size: 50px;'>🔧 Developer Mode Activated</p>";
         echo "<p style='color: #666;'>Welcome, Developer!</p>";
         echo "<p><a href='../home.html' style='color: #a581e8; text-decoration: none;'>Continue to Home →</a></p>";
         echo "</div>";
-        header("refresh:2;url=../home.html");
         exit;
     }
 
