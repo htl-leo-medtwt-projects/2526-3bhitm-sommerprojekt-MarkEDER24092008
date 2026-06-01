@@ -15,10 +15,21 @@ let streakData = {
  */
 async function fetchStreakData() {
     try {
+        console.log('[Streak] Fetching streak data...');
         const response = await fetch('./sql/getStreakData.php');
-        const data = await response.json();
+        
+        if (!response.ok) {
+            console.error('[Streak] HTTP error, status:', response.status);
+            return null;
+        }
+        
+        const text = await response.text();
+        console.log('[Streak] Raw response:', text);
+        
+        const data = JSON.parse(text);
         
         if (data.success) {
+            console.log('[Streak] Data fetched successfully:', data);
             streakData = {
                 streak_count: data.streak_count,
                 streak_longest: data.streak_longest,
@@ -32,7 +43,7 @@ async function fetchStreakData() {
             return null;
         }
     } catch (error) {
-        console.error('Error fetching streak data:', error);
+        console.error('[Streak] Exception:', error);
         return null;
     }
 }
@@ -42,10 +53,21 @@ async function fetchStreakData() {
  */
 async function checkStreakStatus() {
     try {
+        console.log('[Streak] Checking streak status...');
         const response = await fetch('./sql/checkStreakStatus.php');
-        const data = await response.json();
+        
+        if (!response.ok) {
+            console.error('[Streak] HTTP error checking status, status:', response.status);
+            return null;
+        }
+        
+        const text = await response.text();
+        console.log('[Streak] Raw status response:', text);
+        
+        const data = JSON.parse(text);
         
         if (data.success) {
+            console.log('[Streak] Status checked successfully:', data);
             streakData.streak_active = data.streak_active;
             streakData.goal_met_today = data.goal_met_today;
             return data;
@@ -54,23 +76,24 @@ async function checkStreakStatus() {
             return null;
         }
     } catch (error) {
-        console.error('Error checking streak status:', error);
+        console.error('[Streak] Exception checking status:', error);
         return null;
     }
 }
 
 /**
- * Format seconds to HH:MM format
+ * Format seconds to HH:MM:SS format
  */
 function formatTime(seconds) {
     if (seconds <= 0) {
-        return '00:00';
+        return '00:00:00';
     }
     
     const hours = Math.floor(seconds / 3600);
     const minutes = Math.floor((seconds % 3600) / 60);
+    const secs = seconds % 60;
     
-    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
 /**
@@ -78,10 +101,12 @@ function formatTime(seconds) {
  */
 function getSecondsUntilMidnight() {
     const now = new Date();
-    const midnight = new Date(now);
-    midnight.setHours(24, 0, 0, 0); // Set to next midnight
+    const tomorrow = new Date(now);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    tomorrow.setHours(0, 0, 0, 0);
     
-    const secondsRemaining = Math.floor((midnight - now) / 1000);
+    const secondsRemaining = Math.floor((tomorrow - now) / 1000);
+    console.log('[Streak] Now:', now.toLocaleTimeString(), 'Tomorrow midnight:', tomorrow.toLocaleTimeString(), 'Seconds remaining:', secondsRemaining);
     return Math.max(0, secondsRemaining);
 }
 
@@ -94,18 +119,25 @@ function updateTimer() {
     const hurryElement = document.getElementById('hurry-text');
     const flameImage = document.getElementById('flame-image');
     
-    // Update timer display
-    timerElement.textContent = formatTime(timeRemaining);
+    if (!timerElement || !hurryElement || !flameImage) {
+        console.error('[Streak] Timer elements not found in DOM');
+        return;
+    }
+    
+    // Update timer display with HH:MM:SS format
+    const formattedTime = formatTime(timeRemaining);
+    timerElement.textContent = formattedTime;
+    console.log('[Streak] Timer updated:', formattedTime);
     
     // Update urgency message and flame state based on time remaining
     if (timeRemaining <= 0) {
         // Time's up - streak expires if goal not met
         if (!streakData.goal_met_today) {
             streakData.streak_active = false;
-            flameImage.src = './media/images/grayFlame.gif';
+            flameImage.src = './media/images/grayFlame.png';
             hurryElement.textContent = "Streak expired! 😢";
             hurryElement.style.display = 'block';
-            timerElement.textContent = '00:00';
+            timerElement.textContent = '00:00:00';
             // Refetch to update streak count in UI
             checkStreakStatus();
         }
@@ -123,6 +155,9 @@ function updateTimer() {
     }
     
     // Schedule next update in 1 second
+    if (timerIntervalId) {
+        clearTimeout(timerIntervalId);
+    }
     timerIntervalId = setTimeout(updateTimer, 1000);
 }
 
@@ -147,7 +182,7 @@ function updateUI() {
     if (streakData.streak_active && streakData.streak_count > 0) {
         flameImage.src = './media/images/fire.gif';
     } else {
-        flameImage.src = './media/images/grayFlame.gif';
+        flameImage.src = './media/images/grayFlame.png';
     }
 }
 
@@ -155,20 +190,25 @@ function updateUI() {
  * Initialize the streak page
  */
 async function initializeStreak() {
+    console.log('[Streak] Initializing streak page...');
+    
     // Fetch streak data from database
     const data = await fetchStreakData();
     
     if (data) {
+        console.log('[Streak] Fetched data, now checking status...');
         // Check streak status (handles daily reset)
         await checkStreakStatus();
         
         // Update UI with current data
+        console.log('[Streak] Updating UI with:', streakData);
         updateUI();
         
         // Start the timer
+        console.log('[Streak] Starting timer...');
         updateTimer();
     } else {
-        console.error('Failed to initialize streak');
+        console.error('[Streak] Failed to initialize streak - no data returned');
         document.getElementById('streak-num').textContent = 'Error';
     }
 }

@@ -10,6 +10,8 @@ require_once("dbConfig.php");
 // Get user ID from session
 $user_id = $_SESSION["user"]["id"];
 
+error_log("[checkStreakStatus] User ID: " . $user_id);
+
 // Get today's date
 $today = date("Y-m-d");
 
@@ -17,6 +19,7 @@ $today = date("Y-m-d");
 $yesterday = date("Y-m-d", strtotime("-1 day"));
 $stmt = $conn->prepare("SELECT goal_met FROM streak_log WHERE user_id = ? AND log_date = ?");
 if (!$stmt) {
+    error_log("[checkStreakStatus] Prepare failed: " . $conn->error);
     die(json_encode(array("error" => "Prepare failed: " . $conn->error)));
 }
 
@@ -34,10 +37,14 @@ if ($res->num_rows > 0) {
     $streak_active = true;
 }
 
+error_log("[checkStreakStatus] Yesterday streak active: " . ($streak_active ? "true" : "false"));
+
 // If streak is broken, reset streak_count to 0
 if (!$streak_active) {
+    error_log("[checkStreakStatus] Streak broken, resetting to 0");
     $stmt = $conn->prepare("UPDATE user SET streak_count = 0 WHERE id = ?");
     if (!$stmt) {
+        error_log("[checkStreakStatus] Prepare failed: " . $conn->error);
         die(json_encode(array("error" => "Prepare failed: " . $conn->error)));
     }
     $stmt->bind_param("i", $user_id);
@@ -48,6 +55,7 @@ if (!$streak_active) {
 // Check today's goal status
 $stmt = $conn->prepare("SELECT goal_met FROM streak_log WHERE user_id = ? AND log_date = ?");
 if (!$stmt) {
+    error_log("[checkStreakStatus] Prepare failed: " . $conn->error);
     die(json_encode(array("error" => "Prepare failed: " . $conn->error)));
 }
 
@@ -60,6 +68,8 @@ if ($res->num_rows > 0) {
     $row = $res->fetch_assoc();
     $goal_met_today = (bool)$row["goal_met"];
 }
+
+error_log("[checkStreakStatus] Today goal met: " . ($goal_met_today ? "true" : "false"));
 
 // Return the streak status
 echo json_encode(array(
