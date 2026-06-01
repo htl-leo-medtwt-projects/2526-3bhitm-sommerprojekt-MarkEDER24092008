@@ -21,15 +21,15 @@
 
 
         <div class="step">
-          <a href="./lesson.html"><button class="lessonButton"><img src="./media/images/studyHat.png" alt="Learning exercise"></button></a>
+          <button class="lessonButton" onclick="handleLessonClick(event)"><img src="./media/images/studyHat.png" alt="Learning exercise"></button>
         </div>
 
         <div class="step">
-          <a href="./lesson.html"><button class="lessonButton"><img src="./media/images/pencil.png" alt="Writing exercise"></button></a>
+          <button class="lessonButton" onclick="handleLessonClick(event)"><img src="./media/images/pencil.png" alt="Writing exercise"></button>
         </div>
 
         <div class="step">
-          <a href="./lesson.html"><button class="lessonButton"><img src="./media/images/speech.png" alt="Speaking exercise"></button></a>
+          <button class="lessonButton" onclick="handleLessonClick(event)"><img src="./media/images/speech.png" alt="Speaking exercise"></button>
         </div>
 
       </div>
@@ -61,6 +61,34 @@
       </a>
     </nav>
 
+    <script>
+      /**
+       * Handle lesson button clicks
+       * Marks today's lesson as completed and updates the streak
+       */
+      async function handleLessonClick(event) {
+        event.preventDefault();
+        
+        try {
+          // Call the lesson completion endpoint
+          const response = await fetch('./sql/completeLesson.php', {
+            method: 'POST'
+          });
+          const data = await response.json();
+          
+          if (data.success) {
+            console.log('Lesson marked as completed:', data.message);
+          } else {
+            console.error('Error marking lesson as completed:', data.error);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+        
+        // Navigate to lesson page
+        window.location.href = './lesson.html';
+      }
+    </script>
 
 </body>
 </html>

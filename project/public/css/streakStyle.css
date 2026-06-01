@@ -6,13 +6,21 @@
     margin-bottom: 10px;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
+
 .fire-wrap {
     cursor: pointer;
     transition: transform 0.2s ease;
+    margin: 20px 0;
 }
 
 .fire-wrap:hover {
     transform: scale(1.05);
+}
+
+#flame-image {
+    max-width: 200px;
+    height: auto;
+    transition: opacity 0.3s ease;
 }
 
 .pop-animation {
@@ -29,4 +37,46 @@
     100% {
         transform: scale(1);
     }
+}
+
+.timer-text {
+    font-size: 18px;
+    color: #666;
+    text-align: center;
+    margin: 15px 0;
+    font-weight: 500;
+}
+
+#timer {
+    font-size: 24px;
+    color: #7e52cf;
+    font-weight: bold;
+    font-family: 'Courier New', monospace;
+}
+
+.hurry {
+    text-align: center;
+    font-size: 16px;
+    color: #ff6b6b;
+    margin: 10px 0;
+    font-weight: bold;
+    min-height: 20px;
+}
+
+.streak-info {
+    text-align: center;
+    margin-top: 20px;
+    border-top: 2px solid #e0e0e0;
+    padding-top: 15px;
+}
+
+.streak-info p {
+    margin: 8px 0;
+    font-size: 16px;
+    color: #666;
+}
+
+#goal-status {
+    font-weight: bold;
+    font-size: 18px;
 }

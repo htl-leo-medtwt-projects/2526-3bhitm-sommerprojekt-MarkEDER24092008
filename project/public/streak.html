@@ -15,10 +15,14 @@
 <div style="display:flex;justify-content:center;">
 
       <div class="card">
-        <div class="streak-title">Your Streak: <span id="streak-num">99</span>!</div>
-        <div class="fire-wrap" id="fire" onclick="popFire()"><img src="./media/images/fire.gif" alt=""></div>
-        <div class="timer-text">Time left: (<span id="timer">--:--</span>)</div>
-        <div class="hurry" id="hurry-text">Hurry!</div>
+        <div class="streak-title">Your Streak: <span id="streak-num">0</span>!</div>
+        <div class="fire-wrap" id="fire" onclick="popFire()"><img id="flame-image" src="./media/images/fire.gif" alt="Streak Flame"></div>
+        <div class="timer-text">Time left: <span id="timer">--:--</span></div>
+        <div class="hurry" id="hurry-text"></div>
+        <div class="streak-info">
+          <p>Best Streak: <span id="streak-longest">0</span></p>
+          <p id="goal-status">Today: Not completed</p>
+        </div>
       </div>
     </div>
 
