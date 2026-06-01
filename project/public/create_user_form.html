@@ -13,7 +13,7 @@
     <h1 class="title">Create New User</h1>
     <img class="back-button" src="./media/images/backButton.png" alt="Go Back" onclick="window.history.back()">
     <div class="card">
-        <form method="POST" action="./sql/createUserMySql.php" onsubmit="return validateFormBeforeSubmit(event)">
+<form method="POST" action="./sql/createUserMySql.php" onsubmit="return validateFormBeforeSubmit(event)" enctype="multipart/form-data">
             <input placeholder="Username" type="text" name="username" required id="usernameInput"> <br>
             <div class="password-wrapper">
                 <input placeholder="Password" type="password" name="password" required id="passwordInput">
@@ -21,6 +21,13 @@
             </div>
             <div id="strengthIndicator" class="strength-indicator"></div>
             <div id="strengthMessage" class="strength-message"></div>
+
+            <div style="text-align:center; margin-top: 10px;">
+                <label style="display:block; font-weight:bold; color:#a581e8; margin-bottom:6px;">Profile image (optional)</label>
+                <input type="file" name="avatar" accept="image/*" />
+                <div id="avatarHint" style="font-size:12px;color:#a581e8;margin-top:4px;">JPG/PNG/GIF up to 5MB</div>
+            </div>
+
             <input type="submit" name="submit" value="Create New User" id="submitButton">
         </form>
     </div>

@@ -60,10 +60,42 @@ if(!empty($_POST["submit"])) {
         #VARCHAR 60 necessary, but officially PHP reccomendation: at least 255 characters
         $_passwortHash = password_hash($_password, PASSWORD_BCRYPT);
 
-        #Statement for insert the values of the new user
+        // Handle optional avatar upload
+        $avatarUrl = null;
+        if (isset($_FILES["avatar"]) && $_FILES["avatar"]["error"] === UPLOAD_ERR_OK) {
+            $tmpPath = $_FILES["avatar"]["tmp_name"];
 
-        $insertStatement = "INSERT INTO user (username, email, password_hash, created_at, streak_count, last_login, xp, language_id) 
-                            VALUES ('$_username', NULL, '$_passwortHash', NOW(), 0, NOW(), 0, -1);";
+            $finfo = new finfo(FILEINFO_MIME_TYPE);
+            $mimeType = $finfo->file($tmpPath);
+            $allowed = [
+                "image/jpeg" => "jpg",
+                "image/png" => "png",
+                "image/gif" => "gif"
+            ];
+
+            if (isset($allowed[$mimeType])) {
+                $ext = $allowed[$mimeType];
+
+                $uploadDir = __DIR__ . "../user/avatars";
+                if (!is_dir($uploadDir)) {
+                    mkdir($uploadDir, 0775, true);
+                }
+
+                $fileName = "avatar_new_" . uniqid() . "." . $ext;
+                $targetPath = $uploadDir . DIRECTORY_SEPARATOR . $fileName;
+
+                if (move_uploaded_file($tmpPath, $targetPath)) {
+                    $avatarUrl = "./user/avatars/" . $fileName;
+                }
+            }
+        }
+
+
+        //Statement for insert the values of the new user
+
+        $insertStatement = "INSERT INTO user (username, email, password_hash, created_at, streak_count, last_login, xp, language_id, avatar_url) 
+                            VALUES ('$_username', NULL, '$_passwortHash', NOW(), 0, NOW(), 0, -1, " . ($avatarUrl ? "'".$avatarUrl."'" : "NULL") . ");";
+
 
         if($_res = $conn->query($insertStatement)) {
             $_SESSION['username'] = $_username;
