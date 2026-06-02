@@ -56,7 +56,6 @@ if (!move_uploaded_file($tmpPath, $targetPath)) {
 }
 
 $relativeUrl = "./user/avatars/" . $fileName;
-$relativeUrlEscaped = $conn->real_escape_string($relativeUrl);
 
 // Update DB
 $stmt = $conn->prepare("UPDATE user SET avatar_url = ? WHERE id = ?");
