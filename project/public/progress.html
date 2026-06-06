@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Progress</title>
+  <link rel="stylesheet" href="./css/generalStyle.css">
+  <link rel="icon" type="image/png" href="./media/images/favicons/streak_favicon.png">
+  <script src="./js/theme.js"></script>
+</head>
+<body>
+  <div class="mainCard">
+    <div class="progress-title">Your Progress</div>
+
+    <div class="progress-box" style="margin-top:12px;">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <div>
+          <div style="font-size:14px; opacity:0.8;">Current status</div>
+          <div id="progress-status" style="font-size:18px; font-weight:700;">Loading...</div>
+        </div>
+
+        <div style="width:56px; height:56px; border-radius:14px; display:flex; align-items:center; justify-content:center; background:rgba(255,255,255,0.08);">
+          <img src="./media/images/progress.png" alt="Progress" style="width:40px; height:40px;" />
+        </div>
+      </div>
+
+      <div style="margin-top:10px; opacity:0.9; font-size:14px;">
+        <div><b>Last attempt:</b> <span id="progress-last-attempt">-</span></div>
+        <div><b>Score:</b> <span id="progress-score">0</span></div>
+      </div>
+    </div>
+
+    <div id="progress-error" style="margin-top:14px; color:#d32f2f; display:none;"></div>
+  </div>
+
+  <nav class="bottomNav">
+    <a href="./home.html">
+      <div class="bottomNavButton"><img src="./media/images/home.png" alt="Home"></div>
+    </a>
+
+    <a href="./settings.html">
+      <div class="bottomNavButton"><img src="./media/images/settings.png" alt="Settings"></div>
+    </a>
+
+    <a href="./progress.html">
+      <div class="bottomNavButton"><img src="./media/images/progress.png" alt="Progress"></div>
+    </a>
+
+    <a href="./profile.php">
+      <div class="bottomNavButton"><img src="./media/images/profile.png" alt="Profile"></div>
+    </a>
+
+    <a href="./streak.html">
+      <div class="bottomNavButton"><img src="./media/images/fire.gif" alt="Streak"></div>
+    </a>
+  </nav>
+
+  <script>
+    async function loadProgress() {
+      const errEl = document.getElementById('progress-error');
+      const statusEl = document.getElementById('progress-status');
+      const lastAttemptEl = document.getElementById('progress-last-attempt');
+      const scoreEl = document.getElementById('progress-score');
+
+      try {
+        const res = await fetch('./sql/getProgress.php', { method: 'GET' });
+        const data = await res.json();
+
+        if (!data.success) throw new Error(data.error || 'Failed to load progress');
+
+        if (data.completed) {
+          statusEl.textContent = 'Lesson goal completed';
+        } else {
+          statusEl.textContent = 'In progress';
+        }
+
+        scoreEl.textContent = String(data.score ?? 0);
+
+        if (data.last_attempt) {
+          const d = new Date(data.last_attempt);
+          lastAttemptEl.textContent = isNaN(d.getTime()) ? data.last_attempt : d.toLocaleString();
+        } else {
+          lastAttemptEl.textContent = '-';
+        }
+      } catch (e) {
+        if (errEl) {
+          errEl.style.display = 'block';
+          errEl.textContent = 'Error: ' + (e?.message || e);
+        }
+        statusEl.textContent = 'Error';
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProgress);
+  </script>
+</body>
+</html>

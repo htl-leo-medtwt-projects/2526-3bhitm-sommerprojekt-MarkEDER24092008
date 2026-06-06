@@ -114,6 +114,10 @@ $avatarImg = $avatarUrl ? $avatarUrl : "";
             <div class="bottomNavButton"><img src="./media/images/settings.png" alt="Settings"></div>
         </a>
 
+        <a href="./progress.html">
+        <div class="bottomNavButton"><img src="./media/images/progress.png" alt="Progress"></div>
+      </a>
+
         <a href="./profile.php">
             <div class="bottomNavButton"><img src="./media/images/profile.png" alt="Profile"></div>
         </a>

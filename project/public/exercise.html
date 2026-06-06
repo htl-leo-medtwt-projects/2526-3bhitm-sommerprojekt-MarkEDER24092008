@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercise</title>
+  <link rel="stylesheet" href="./css/generalStyle.css">
+  <link rel="stylesheet" href="./css/exerciseStyle.css">
+  <script src="./js/theme.js"></script>
+  <link rel="icon" type="image/png" href="./media/images/favicons/lesson_favicon.png">
+</head>
+<body>
+  <!-- Hearts (top-right) -->
+  <div id="hearts-meter" class="hearts-meter" aria-label="Hearts meter">
+    <div class="hearts-icon">💛</div>
+    <div class="hearts-count" id="hearts-count">5</div>
+  </div>
+
+  <div class="card">
+    <div class="exercise-header">
+      <div class="exercise-lesson-title" id="lesson-title">Lesson</div>
+      <div class="exercise-mode" id="exercise-mode">Mode</div>
+    </div>
+
+    <div class="exercise-content">
+      <div class="question-text" id="question-text">Loading...</div>
+
+      <div class="question-hint" id="question-hint" style="display:none;"></div>
+
+      <img class="question-image" id="question-image" alt="" style="display:none;" />
+
+      <audio class="question-audio" id="question-audio" controls style="display:none;"></audio>
+    </div>
+
+    <!-- Multiple choice -->
+    <div id="mc-choices" class="mc-choices" style="display:none;"></div>
+
+    <!-- Text input -->
+    <div id="text-input-wrap" class="text-input-wrap" style="display:none;">
+      <input id="text-answer" type="text" class="text-answer" autocomplete="off" placeholder="Type your answer..." />
+    </div>
+
+    <div class="exercise-actions">
+      <button class="exercise-btn secondary" id="skip-btn" type="button">Skip</button>
+      <button class="exercise-btn primary" id="submit-btn" type="button">Submit</button>
+    </div>
+
+    <div class="exercise-feedback" id="feedback" aria-live="polite"></div>
+  </div>
+
+  <nav class="bottomNav">
+    <a href="./home.html">
+      <div class="bottomNavButton"><img src="./media/images/home.png" alt="Home"></div>
+    </a>
+
+    <a href="./settings.html">
+      <div class="bottomNavButton"><img src="./media/images/settings.png" alt="Settings"></div>
+    </a>
+
+    <a href="./progress.html">
+      <div class="bottomNavButton"><img src="./media/images/streak_favicon.png" alt="Progress"></div>
+    </a>
+
+    <a href="./profile.php">
+      <div class="bottomNavButton"><img src="./media/images/profile.png" alt="Profile"></div>
+    </a>
+
+    <a href="./streak.html">
+      <div class="bottomNavButton"><img src="./media/images/fire.gif" alt="Streak"></div>
+    </a>
+  </nav>
+
+  <script src="./js/exercise.js" defer></script>
+</body>
+</html>

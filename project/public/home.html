@@ -22,15 +22,22 @@
 
 
         <div class="step">
-          <button class="lessonButton" onclick="handleLessonClick(event)"><img src="./media/images/studyHat.png" alt="Learning exercise"></button>
+          <a href="./exercise.html?mode=multiple_choice" class="lessonLink" aria-label="Learning exercise">
+            <button class="lessonButton" type="button"><img src="./media/images/studyHat.png" alt="Learning exercise"></button>
+          </a>
         </div>
 
         <div class="step">
-          <button class="lessonButton" onclick="handleLessonClick(event)"><img src="./media/images/pencil.png" alt="Writing exercise"></button>
+          <a href="./exercise.html?mode=text" class="lessonLink" aria-label="Writing exercise">
+            <button class="lessonButton" type="button"><img src="./media/images/pencil.png" alt="Writing exercise"></button>
+          </a>
         </div>
 
         <div class="step">
-          <button class="lessonButton" onclick="handleLessonClick(event)"><img src="./media/images/speech.png" alt="Speaking exercise"></button>
+          <button class="lessonButton" type="button" disabled style="opacity:0.6; cursor:not-allowed;" aria-label="Speaking exercise (coming soon)">
+            <img src="./media/images/speech.png" alt="Speaking exercise">
+          </button>
+          <div class="comingSoonText" style="text-align:center; margin-top:4px; font-size:12px; opacity:0.8;">Coming soon</div>
         </div>
 
       </div>
@@ -55,12 +62,13 @@
         <div class="bottomNavButton"><img src="./media/images/settings.png" alt="Settings"></div>
       </a>
 
-      
+      <a href="./progress.html">
+        <div class="bottomNavButton"><img src="./media/images/progress.png" alt="Progress"></div>
+      </a>
 
       <a href="./profile.php">
         <div class="bottomNavButton"><img src="./media/images/profile.png" alt="Profile"></div>
       </a>
-
 
       <a href="./streak.html">
         <div class="bottomNavButton"><img src="./media/images/fire.gif" alt="Streak"></div>
@@ -68,32 +76,7 @@
     </nav>
 
     <script>
-      /**
-       * Handle lesson button clicks
-       * Marks today's lesson as completed and updates the streak
-       */
-      async function handleLessonClick(event) {
-        event.preventDefault();
-        
-        try {
-          // Call the lesson completion endpoint
-          const response = await fetch('./sql/completeLesson.php', {
-            method: 'POST'
-          });
-          const data = await response.json();
-          
-          if (data.success) {
-            console.log('Lesson marked as completed:', data.message);
-          } else {
-            console.error('Error marking lesson as completed:', data.error);
-          }
-        } catch (error) {
-          console.error('Error:', error);
-        }
-        
-        // Navigate to lesson page
-        window.location.href = './lesson.html';
-      }
+      // Duolingo-style exercise navigation is handled via direct links above.
     </script>
 
 </body>
