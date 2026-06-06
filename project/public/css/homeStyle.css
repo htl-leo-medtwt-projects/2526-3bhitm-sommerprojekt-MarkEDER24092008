@@ -40,6 +40,13 @@
     align-items: center;
 }
 
+.character video {
+    width: 500px;  /* Adjust width as needed */
+    height: auto;  /* Maintain aspect ratio */
+    object-fit: contain;
+    margin-bottom: -150px;
+}
+
 .character img {
     width: 25%;  /* Slightly smaller character */
     max-height: 150px;  /* Limit height */

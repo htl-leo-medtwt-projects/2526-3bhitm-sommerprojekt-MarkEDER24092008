@@ -5,15 +5,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 20px;
     box-sizing: border-box;
 }
 
 .welcomeCard {
     background-color: white;
     border-radius: 5px;
-    padding: 40px;
-    max-width: 500px;
+    padding-top: 40px;
+    padding-left: 40px;
+    padding-right: 40px;
+    max-width: 700px;
     width: 100%;
     text-align: center;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -108,11 +109,6 @@
 
     .welcomeDescription {
         font-size: 14px;
-    }
-
-    .welcomeMascot {
-        width: 120px;
-        height: 120px;
     }
 
 }
