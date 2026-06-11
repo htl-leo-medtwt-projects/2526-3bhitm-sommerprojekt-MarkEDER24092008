@@ -21,19 +21,27 @@
   }
 
   function applyVolumes() {
-    // Existing app uses localStorage keys: volume, music, sfx (0-100)
+    // localStorage sliders:
+    // - volume: master (0-100)
+    // - music: music level (0-100)
+    // - sfx: sfx level (0-100)
     const volume = getNumber('volume', 100) / 100;
     const music = getNumber('music', 100) / 100;
     const sfx = getNumber('sfx', 100) / 100;
 
-    const master = Math.max(0, Math.min(1, volume));
-    const musicGain = Math.max(0, Math.min(1, master * music));
-    const sfxGain = Math.max(0, Math.min(1, master * sfx));
+    const masterGain = clamp01(volume);
+    const musicGain = clamp01(masterGain * clamp01(music));
+    const sfxGain = clamp01(masterGain * clamp01(sfx));
 
     if (popAudio) popAudio.volume = sfxGain;
     if (clickFieldAudio) clickFieldAudio.volume = sfxGain;
     if (bkgAudio) bkgAudio.volume = musicGain;
   }
+
+  function clamp01(n) {
+    return Math.max(0, Math.min(1, n));
+  }
+
 
   function safeEnsureAudio() {
     if (!popAudio) {
@@ -224,6 +232,11 @@
     });
   }
 
+  // Expose a helper for Settings page to immediately apply volume changes.
+  window.__indigoApplyAudioVolumes = function __indigoApplyAudioVolumes() {
+    applyVolumes();
+  };
+
   // Auto start background when already on home
   document.addEventListener('DOMContentLoaded', () => {
     safeEnsureAudio();
@@ -231,6 +244,7 @@
     playBkgIfHome();
     setupListeners();
   });
+
 
   // Also set up early to catch clicks even before DOMContentLoaded in unusual cases
   // (listener is idempotent enough for our needs).

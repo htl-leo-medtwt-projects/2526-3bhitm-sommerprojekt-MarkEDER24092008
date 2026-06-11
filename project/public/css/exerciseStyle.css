@@ -27,8 +27,11 @@
 }
 
 .hearts-icon img#heart-image{
+  /* Ensure heart icon never gets larger than 200x200px even with animation */
   width: 16px;
   height: 16px;
+  max-width: 200px;
+  max-height: 200px;
   display:block;
   transform-origin: center;
   animation: heartBeat 0.9s ease-in-out infinite;

@@ -76,10 +76,17 @@ function setupSliderListeners() {
             
             // Apply changes immediately
             if (sliderId === 'volume' || sliderId === 'music' || sliderId === 'sfx') {
+                // Update volumes for the currently loaded audio.
+                // `audio.js` reads localStorage keys with the same names.
                 applyAudioLevels();
+                // Also notify the audio controller if it exposed an update method.
+                if (typeof window.__indigoApplyAudioVolumes === 'function') {
+                    window.__indigoApplyAudioVolumes();
+                }
             } else if (sliderId === 'brightness') {
                 applyBrightness(value);
             }
+
         });
         
         // Update display on load
