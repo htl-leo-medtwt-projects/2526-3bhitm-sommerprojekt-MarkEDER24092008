@@ -7,12 +7,22 @@
   <link rel="stylesheet" href="./css/generalStyle.css">
   <link rel="icon" type="image/png" href="./media/images/favicons/streak_favicon.png">
   <script src="./js/theme.js"></script>
+  <script src="./js/audio.js" defer></script>
 </head>
 <body>
+
   <div class="mainCard">
     <div class="progress-title">Your Progress</div>
 
-    <div class="progress-box" style="margin-top:12px;">
+    <!-- Hearts meter (top-right) -->
+    <div class="hearts-meter" aria-label="Hearts meter" style="position:relative; top:-76px; float:right;">
+      <div class="hearts-icon">
+        <img id="heart-image" src="./media/images/heart.png" alt="Heart" />
+      </div>
+      <div class="hearts-count" id="hearts-count">5</div>
+    </div>
+
+    <div class="progress-box" style="margin-top:12px; clear:both;">
       <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
         <div>
           <div style="font-size:14px; opacity:0.8;">Current status</div>
@@ -56,6 +66,21 @@
   </nav>
 
   <script>
+    async function loadHearts() {
+      const heartsCountEl = document.getElementById('hearts-count');
+      if (!heartsCountEl) return;
+
+      try {
+        const res = await fetch('./sql/exercise_get.php?mode=multiple_choice', { method: 'GET' });
+        const data = await res.json();
+        if (data && data.success && typeof data.hearts === 'number') {
+          heartsCountEl.textContent = data.hearts;
+        }
+      } catch (e) {
+        console.error('Failed to load hearts:', e);
+      }
+    }
+
     async function loadProgress() {
       const errEl = document.getElementById('progress-error');
       const statusEl = document.getElementById('progress-status');
@@ -91,7 +116,10 @@
       }
     }
 
-    document.addEventListener('DOMContentLoaded', loadProgress);
+    document.addEventListener('DOMContentLoaded', () => {
+      loadProgress();
+      loadHearts();
+    });
   </script>
 </body>
 </html>

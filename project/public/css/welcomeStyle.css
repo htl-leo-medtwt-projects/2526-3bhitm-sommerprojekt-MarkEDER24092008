@@ -96,6 +96,19 @@
     transform: translateY(-2px);
 }
 
+.welcomeMascotBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.welcomeMascotBox video {
+    width: auto;
+    max-height: 400px;
+}
+
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .welcomeCard {

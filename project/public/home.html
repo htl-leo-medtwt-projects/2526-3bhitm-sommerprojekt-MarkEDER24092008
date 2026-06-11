@@ -13,6 +13,14 @@
 <body>
 
 
+    <!-- Hearts meter (top-right) -->
+    <div id="home-hearts-meter" class="hearts-meter" aria-label="Hearts meter">
+      <div class="hearts-icon">
+        <img id="heart-image" src="./media/images/heart.png" alt="Heart" />
+      </div>
+      <div class="hearts-count" id="hearts-count">5</div>
+    </div>
+
     <!-- Main Card -->
     <div class="mainCard">
       
@@ -75,9 +83,27 @@
       </a>
     </nav>
 
-    <script>
-      // Duolingo-style exercise navigation is handled via direct links above.
-    </script>
+  <script src="./js/audio.js" defer></script>
 
+  <script>
+    // Load hearts left (same source as the exercise page)
+
+    async function loadHomeHearts() {
+      try {
+        const res = await fetch('./sql/exercise_get.php?mode=multiple_choice', { method: 'GET' });
+        const data = await res.json();
+
+        if (data && data.success && typeof data.hearts === 'number') {
+          const heartsEl = document.getElementById('hearts-count');
+          if (heartsEl) heartsEl.textContent = data.hearts;
+        }
+      } catch (e) {
+        console.error('Failed to load hearts:', e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadHomeHearts);
+  </script>
 </body>
 </html>
+

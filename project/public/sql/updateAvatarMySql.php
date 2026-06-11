@@ -40,8 +40,11 @@ if (!isset($allowed[$mimeType])) {
 
 $ext = $allowed[$mimeType];
 
-// Ensure upload folder exists
-$uploadDir = __DIR__ . "../user/avatars";
+/*
+ * Save avatars into: /sql/users/avatars
+ * (this file lives in /public/sql, so "users/avatars" is sibling of this folder)
+ */
+$uploadDir = __DIR__ . "/users/avatars";
 if (!is_dir($uploadDir)) {
     mkdir($uploadDir, 0775, true);
 }
@@ -55,7 +58,8 @@ if (!move_uploaded_file($tmpPath, $targetPath)) {
     exit;
 }
 
-$relativeUrl = "./user/avatars/" . $fileName;
+// URL used by frontend to load avatar (relative to /public)
+$relativeUrl = "./sql/users/avatars/" . $fileName;
 
 // Update DB
 $stmt = $conn->prepare("UPDATE user SET avatar_url = ? WHERE id = ?");

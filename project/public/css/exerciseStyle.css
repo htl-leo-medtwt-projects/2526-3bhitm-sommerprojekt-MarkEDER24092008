@@ -1,13 +1,14 @@
 .hearts-meter{
   position: fixed;
-  top: 90px;
-  right: 18px;
+  /* keep hearts meter within the top ~10% */
+  top: 56px;
+  right: 12px;
   z-index: 2000;
   display:flex;
   align-items:center;
-  gap:8px;
-  padding:10px 14px;
-  border-radius:14px;
+  gap:6px;
+  padding:8px 10px;
+  border-radius:12px;
   background: rgba(255,255,255,0.85);
   backdrop-filter: blur(6px);
   border: 1px solid rgba(0,0,0,0.08);
@@ -19,8 +20,27 @@
 }
 
 .hearts-icon{
-  font-size: 18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   line-height: 1;
+}
+
+.hearts-icon img#heart-image{
+  width: 16px;
+  height: 16px;
+  display:block;
+  transform-origin: center;
+  animation: heartBeat 0.9s ease-in-out infinite;
+}
+
+@keyframes heartBeat{
+  0% { transform: scale(1); }
+  15% { transform: scale(1.18); }
+  30% { transform: scale(1.02); }
+  45% { transform: scale(1.25); }
+  60% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .hearts-count{
