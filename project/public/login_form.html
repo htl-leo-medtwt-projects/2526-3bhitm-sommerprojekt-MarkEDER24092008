@@ -15,12 +15,15 @@
     <img class="back-button" src="./media/images/backButton.png" alt="Go Back" onclick="window.history.back()">
     <div class="card">
         <form method="POST" action="./sql/loginMySql.php">
-            Username: <input type="text" name="username" required id="usernameInput"> <br>
-            Password: <input type="password" name="password" required id="passwordInput"> <br>
-            <div id="developerModeIndicator" style="display: none; text-align: center; margin: 10px 0; font-size: 12px; color: #a581e8; font-weight: bold;">
-                🔧 Developer Mode Detected
+            <input type="text" placeholder="Username" name="username" required id="usernameInput"> <br>
+            
+            <div class="password-wrapper">
+                <input type="password" placeholder="Password" name="password" required id="passwordInput"> <br>
+                <img id="eye" onclick="togglePasswordVisibility()" src="./media/images/privacyHiding.png" alt="Show Password">
             </div>
-            <input type="checkbox" onclick="togglePasswordVisibility()">Show Password <br>
+            <div id="developerModeIndicator" style="display: none; text-align: center; margin: 10px 0; font-size: 12px; color: #a581e8; font-weight: bold;">
+                    🔧 Developer Mode Detected
+                </div>
             <input type="submit" name="submit" value="Login">
             <a href="./forgot_password.html" style="text-align: center; display: block; margin-top: 15px; color: #a581e8; text-decoration: none; font-size: 14px;">Forgot password?</a>
         </form>
