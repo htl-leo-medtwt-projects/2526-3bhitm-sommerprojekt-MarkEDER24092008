@@ -43,6 +43,7 @@ $ext = $allowed[$mimeType];
 /*
  * Save avatars into: /sql/users/avatars
  * (this file lives in /public/sql, so "users/avatars" is sibling of this folder)
+ * Assistance from AI needed to ensure directory exists and to create deterministic filenames per user
  */
 $uploadDir = __DIR__ . "/users/avatars";
 if (!is_dir($uploadDir)) {

@@ -1,6 +1,8 @@
 <?php
 SESSION_START();
 
+//Copilot-Fehlerbehebung: Fehlerprotokollierung hinzugefügt, um Probleme mit der Streak-Statusüberprüfung zu diagnostizieren
+
 // Include auth check to ensure user is logged in
 include("auth_check.php");
 
